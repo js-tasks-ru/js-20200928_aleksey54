@@ -5,5 +5,21 @@
  * @returns {string[]}
  */
 export function sortStrings(arr, param = 'asc') {
-
+  function orderCode (param) {
+    switch (param) {
+    case 'asc':
+      return 1;
+      break;
+    case 'desc':
+      return -1;
+      break;
+    default:
+      return 1;
+    }
+  }
+    return [...arr].sort(
+      function(a,b) {
+        return a.localeCompare(b, 'ru', {caseFirst: 'upper'}) * orderCode(param)
+      }
+      )
 }
